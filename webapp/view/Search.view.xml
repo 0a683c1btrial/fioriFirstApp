@@ -1,0 +1,37 @@
+<mvc:View  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="cgi.hr.so.controller.Search"
+xmlns:f="sap.ui.layout.form">
+        <f:SimpleForm id="sform">
+            <f:content>
+                <Label text="Product Id"></Label>
+                <Input id="prod_id"></Input>
+                <Label text="Category"></Label>
+                <Input id="Category"></Input>
+                <Label text="Price and Currency"></Label>
+                <Input id="Price"></Input>
+            </f:content>
+        </f:SimpleForm>
+        <Toolbar>
+            <ToolbarSpacer/>
+            <Button id = "idSearch" text="Search" press="onSearch"/>
+        </Toolbar>  
+        <Table id = "productTable">
+        <columns>
+            <Column>
+                <Label design="Bold" text="Name"/>
+            </Column>
+            <Column>
+                <Label design="Bold" text="Category"/>
+            </Column>
+            <Column>
+                <Label design="Bold" text="Price"/>
+            </Column>
+            <Column>
+                <Label design="Bold" text="Currency"/>
+            </Column>
+            <Column>
+                <Label design="Bold" text="Supplier_id"/>
+            </Column>
+        </columns>
+        
+        </Table>      
+</mvc:View>

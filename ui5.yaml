@@ -1,0 +1,12 @@
+specVersion: '2.6'
+metadata:
+  name: cgi.hr.so
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        backend:
+        - path: /sap
+          url: http://122.162.240.164:8030/

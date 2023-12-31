@@ -1,0 +1,147 @@
+{
+    "_version":"1.37.0",
+    "sap.app":{
+        "id": "cgi.hr.so",
+        "type":"application",
+        "applicationVersion":{
+            "version":"1.0.0"
+        },
+        "ach":"CGI-HR-SO",
+        "title":"{{appTitle}}",
+        "description":"{{appDescription}}",
+        "i18n":"i18n/i18n.properties",
+        "dataSources": {
+            "anubhavService":{
+                "type": "OData",
+                "uri": "/sap/opu/odata/sap/ZGW_MA_PRODUCT_SRV/",
+                "settings": {
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+
+    },
+    "sap.ui":{
+        "fullWidth":"true",
+        "deviceTypes":{
+            "desktop":"true",
+            "tablet":"true",
+            "phone":"true"
+        },
+        "supportedThemes":["sap_fiori_3","sap_fiori_3_dark","sap_horizon"],
+        "technology":"UI5"
+
+    },
+    "sap.ui5":{
+           "dependencies":{
+                "minUi5Version":"1.96.0",
+                "libs":{
+                    "sap.ui.core":{},
+                    "sap.m":{},
+                    "sap.viz":{}
+                }
+           },
+           "resources":{
+            "css":[{"uri":"css/style.css"}]
+           },
+           "contentDensities":{"compact":"true","cozy":"true"},
+           "models":
+           {
+                 "": {
+                    "type": "sap.ui.model.odata.v2.ODataModel",
+                    "dataSource": "anubhavService",
+                    "settings": {
+                        "useBatch" : true,
+                        "defaultBindingMode": "TwoWay"
+                    }
+                },
+           
+                "local":{
+                    "type":"sap.ui.model.json.JSONModel",
+                    "uri":"models/mockdata/fruits.json",
+                    "preload":"true"
+                   },
+                "i18n":{
+                    "type":"sap.ui.model.resource.ResourceModel",
+                    "settings":{
+                        "bundleUrl":"i18n/i18n.properties"
+                    },
+                    "preload":"true"
+           
+                } 
+            },
+            "rootView":{
+                "viewName":"cgi.hr.so.view.App",
+                "id":"idApp",
+                "type":"XML"
+            },
+            "routing":{
+                "config":{
+                        "routerClass": "sap.m.routing.Router",
+                        "viewPath": "cgi.hr.so.view",
+                        "viewType": "XML",
+                        "controlId": "splitApp"
+                    },
+                "routes":[
+                    {
+                        "name": "spiderman",
+                        "pattern": "",
+                        "target": ["main","empty"]
+                    },
+                    {
+                        "name": "superman",
+                        "pattern": "products/{PRODUCT_ID}",
+                        "target": ["main","fruitDetail"]
+                    },
+                    {
+                        "name": "suppl",
+                        "pattern": "suppliers/{supplierId}",
+                        "target": ["main","supplierDetail"]
+                    },
+                    {
+                        "name": "add",
+                        "pattern": "AddProduct",
+                        "target": ["main","addProd"]
+                    },
+                    {
+                        "name": "search",
+                        "pattern": "SearchProduct",
+                        "target": ["main","searchProd"]
+                    }
+                ],
+                "targets":{
+                    "main":{
+                        "viewName":"View1",
+                        "viewId":"idV1",
+                        "controlAggregation":"masterPages"
+                    },
+                    "empty":{
+                        "viewName":"Empty",
+                        "viewId":"idEmpty",
+                        "controlAggregation":"detailPages"     
+                    },
+                    "fruitDetail":{
+                        "viewName":"View2",
+                        "viewId":"idV2",
+                        "controlAggregation":"detailPages"         
+                    },
+                    "supplierDetail":{
+                        "viewName":"View3",
+                        "viewId":"idV3",
+                        "controlAggregation":"detailPages"         
+                    },
+                    "addProd":{
+                        "viewName": "Add",
+                        "viewId": "idAdd",
+                        "controlAggregation": "detailPages"
+                    },
+                    "searchProd":{
+                        "viewName": "Search",
+                        "viewId": "idSearch",
+                        "controlAggregation": "detailPages"
+                        
+                    }
+                }    
+            }
+    }
+}

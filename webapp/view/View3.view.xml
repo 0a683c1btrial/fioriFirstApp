@@ -1,0 +1,33 @@
+<mvc:View  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="cgi.hr.so.controller.View3" 
+xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout" 
+xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" >
+<Page title="view3" id="page3">
+<!-- <Text text="Welcome to View2"/>
+<Button text="Go to View1" press="goToView1"/> -->
+<content>
+<ObjectHeader title="{Name}" intro="{Category}" number="{Price}" numberUnit="{CurrencyCode}" icon="{imageURL}"/>
+<Select id="idCharts"  change="changeChart" selectedKey="{/chartType}">
+<core:Item key="bar" text="bar"/>
+<core:Item key="column" text="column"/>
+<core:Item key="line" text="line"/>
+<core:Item key="pie" text="pie"/>
+ </Select>
+<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%" vizType="{/chartType}">
+<viz:dataset>
+<viz.data:FlattenedDataset data="{/zproduct001Set}">
+<viz.data:dimensions>
+<viz.data:DimensionDefinition name="Product Id" value="{ProductId}"/>
+</viz.data:dimensions>
+<viz.data:measures>
+<viz.data:MeasureDefinition name="Price" value="{Price}"/>
+</viz.data:measures>
+</viz.data:FlattenedDataset>
+</viz:dataset>
+<viz:feeds>
+<viz.feeds:FeedItem id="valueAxisFeed" uid="valueAxis" type="Measure" values="Price"/>
+<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Product Id"/>
+</viz:feeds>
+</viz:VizFrame>
+</content>
+</Page>
+</mvc:View>

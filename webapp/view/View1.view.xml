@@ -1,0 +1,24 @@
+<mvc:View  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"  controllerName="cgi.hr.so.controller.View1">
+<Page title="View1" id="page1">
+<content>
+<Text text="Welcome to View1"/>
+<Toolbar>
+        <Button id="AddProd" text="Add" icon="sap-icon://add" press="onAddProd" />
+        <Button id="Search" text="Search" icon="sap-icon://search" press="searchProd" />
+        <ToolbarSpacer/>
+    </Toolbar>
+<SearchField id="idSearch" search="onSearch"/>
+<!-- delete="onDelete" mode="Delete" -->
+<List id="idlist" items="{/zproduct001Set}" itemPress="onItemPressSelect" growing="true" growingThreshold="10">
+<items>
+<ObjectListItem type="Navigation" title="{ProductId}" intro="{Category}" number="{Price}"
+numberUnit="{CurrencyCode}" icon="sap-icon://product" />
+</items>
+</List>
+</content>
+<headerContent>
+<!-- <Button text="Go to next" press="goToView2" icon="sap-icon://action"/> -->
+</headerContent>
+   
+</Page>
+</mvc:View>

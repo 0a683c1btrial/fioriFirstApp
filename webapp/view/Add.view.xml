@@ -1,0 +1,111 @@
+<mvc:View  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f = "sap.ui.layout.form" 
+ xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" controllerName="cgi.hr.so.controller.Add">
+ <Text text="AddProduct"/>   
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormToolbar"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false"
+			ariaLabelledBy="Title1" >
+			<f:content>
+				<Label text="Product Id" />
+				<Input id ="prodId" value="{prodModel>/prodData/ProductId}" submit="onLoadSingle"/>
+				<Label text="Name/Description"/>
+				<Input id="idName" value="{prodModel>/prodData/Name}">
+				</Input>
+				<Input value="{prodModel>/prodData/Description}">
+					<layoutData>
+						<l:GridData span="XL2 L1 M3 S4" />
+					</layoutData>
+				</Input>
+				<Label text="SupplierId"/>
+				<Input id="supplierId" value="{prodModel>/prodData/SupplierId}" showValueHelp="true" valueHelpRequest="onF4Supplier"/>
+				<Text id="supplierName" text="{prodModel>/prodData/SupplierName}"/>
+				<Label text="Price/Currency Code" />
+				<Input value="{prodModel>/prodData/Price}">
+					<layoutData>
+						<l:GridData span="XL2 L1 M3 S4" />
+					</layoutData>
+				</Input>
+				<Input value="{prodModel>/prodData/CurrencyCode}" />
+				<Label text="Category" />
+				<Select id="category" selectedKey="{prodModel>/prodData/Category}">
+					<items>
+						<core:Item text="Notebooks" key="Notebooks"/>
+						<core:Item text="Projectors" key="Projectors"/>
+						<core:Item text="Mice" key="Mice"/>
+					</items>
+				</Select>
+				<Button id = "idexpensive" text="Expensive" press="onLoadExpensive" type="Accept"/>
+				</f:content>
+		</f:SimpleForm>
+        </VBox> 
+		<VBox>
+			<Toolbar>
+				<Button id="update" text="update" press="onUpdate" type="Accept"/>
+				<Button id="AddNewRows" text="AddNewRows" press="onAddRow" type="Accept"/>
+			</Toolbar>
+		</VBox>		
+		<VBox>
+			<Table id="idProductsTable" items="{/zproduct001Set}" growing="true" growingThreshold="5" mode="MultiSelect"
+        	growingScrollToLoad="true" selectionChange="productSelectionChange">
+				<columns>
+					<Column>
+						<Label text="Name"/>
+					</Column>
+					<Column>
+						<Label text="Description"/>
+					</Column>
+					<Column>
+						<Label text="SupplierId"/>
+					</Column>
+					<Column>
+						<Label text="SupplierName"/>
+					</Column>
+					<Column>
+						<Label text="Category"/>
+					</Column>
+					<Column>
+						<Label text="Price"/>
+					</Column>
+						<Column>
+						<Label text="CurrencyCode"/>
+					</Column>					
+				</columns>
+				<ColumnListItem
+					vAlign="Inherit">
+					<cells>
+						<Input value="{ProductId}"/>
+						<Input value="{Name}"/>
+						<Input value="{Description}"/>
+						<Input value="{SupplierId}"/>
+						<Input value="{SupplierName}"/>
+						<Input value="{Price}"/>
+						<Input value="{CurrencyCode}"/>
+						<Input value="{Category}"/>
+						<Input value="{TypeCode}"/>
+						<Input value="{DimUnit}"/>
+						<Input value="{TaxTarifCode}"/>
+					</cells>
+				</ColumnListItem>
+			</Table>
+		</VBox>
+		<Toolbar>
+				<ToolbarSpacer/>
+				<Button id ="savebtn" text="Save" press="onSave" type="Accept"/>
+				<Button id="delbtn" text="Delete" press="onDelete" type="Reject"/>
+				<Button text="Clear" press="onClear" type="Reject"/>
+		</Toolbar>
+		</mvc:View>

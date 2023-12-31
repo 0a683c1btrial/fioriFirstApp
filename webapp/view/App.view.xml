@@ -1,0 +1,3 @@
+<mvc:View  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="cgi.hr.so.controller.App">
+<SplitApp id="splitApp"></SplitApp>
+</mvc:View>

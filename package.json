@@ -1,0 +1,23 @@
+{
+  "name": "cgi.hr.so",
+  "version": "1.0.0",
+  "description": "pakage for fiori app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sap/ux-ui5-tooling": "^1.7.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0a683c1btrial/fiorilikeapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/0a683c1btrial/fiorilikeapp/issues"
+  },
+  "homepage": "https://github.com/0a683c1btrial/fiorilikeapp#readme"
+}
